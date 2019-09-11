@@ -61,11 +61,7 @@ public class JwtTokenUtil {
 
     public static void main(String[] args) {
         User user = new User();
-<<<<<<< HEAD
-        user.setUserName("张三444");
-=======
         user.setUserName("张三111");
->>>>>>> madongyun
         user.setUserPwd("123465");
         HashMap<String, Object> mapInfo = new HashMap<>();
         mapInfo.put("userInfo",user);
