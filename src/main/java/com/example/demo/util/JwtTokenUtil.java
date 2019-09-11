@@ -33,7 +33,7 @@ public class JwtTokenUtil {
                 .setHeaderParam("alg", "HS256")
                 .setClaims(mapInfo)//设置payload的私有声明
                 .setIssuedAt(new Date())//签发时间
-                .signWith(signatureAlgorithm, "weqrweq")//设置签名使用的签名算法和签名使用的秘钥
+                .signWith(signatureAlgorithm, signingKey)//设置签名使用的签名算法和签名使用的秘钥
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION * 1000));//设置过期时间
 
         return builder.compact();
@@ -61,25 +61,19 @@ public class JwtTokenUtil {
 
     public static void main(String[] args) {
         User user = new User();
+<<<<<<< HEAD
         user.setUserName("张三444");
+=======
+        user.setUserName("张三111");
+>>>>>>> madongyun
         user.setUserPwd("123465");
         HashMap<String, Object> mapInfo = new HashMap<>();
         mapInfo.put("userInfo",user);
         String jwt = JwtTokenUtil.createJWT(mapInfo);
-        User user1 = new User();
-        user1.setUserName("李四");
-        user1.setUserPwd("123465");
-        HashMap<String, Object> mapInfo1 = new HashMap<>();
-        mapInfo1.put("userInfo",user);
-
-        String jwt1 = JwtTokenUtil.createJWT(mapInfo1);
-        boolean equals = jwt.substring(0,jwt.lastIndexOf(".")).equals(jwt1.substring(0,jwt1.lastIndexOf(".")));
-        System.out.println("是否一致"+jwt.equals(jwt1)+equals);
         System.out.println("====={" + jwt + "}=====");
-        System.out.println("====={" + jwt1 + "}=====");
         Map<String,Object> o = (Map<String, Object>) JwtTokenUtil.getToken(jwt);
         boolean expiration = isExpiration(jwt);
-        System.out.println(expiration);
+        System.out.println("是否过期"+expiration);
         System.out.println(o);
     }
 }
