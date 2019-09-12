@@ -2,6 +2,7 @@ package com.example.demo.util;
 
 import com.example.demo.entity.User;
 import io.jsonwebtoken.*;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.crypto.spec.SecretKeySpec;
@@ -10,7 +11,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+@Slf4j
 public class JwtTokenUtil {
 
     // 过期时间是3600秒
@@ -71,5 +72,6 @@ public class JwtTokenUtil {
         boolean expiration = isExpiration(jwt);
         System.out.println("是否过期"+expiration);
         System.out.println(o);
+        log.info("qqqqqqqqqqqqq");
     }
 }
